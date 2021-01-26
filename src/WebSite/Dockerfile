@@ -16,7 +16,7 @@ COPY "NuGet.config" "NuGet.config"
 RUN dotnet restore "WebSite.sln"
 
 COPY . .
-WORKDIR /src/WebSite/WebSite
+WORKDIR /src/WebSite
 RUN dotnet publish --no-restore -c Release -o /app
 
 FROM build AS publish
