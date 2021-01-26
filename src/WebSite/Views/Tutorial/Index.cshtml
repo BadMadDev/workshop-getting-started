@@ -28,12 +28,12 @@
         </div>
     </p>
     <p>
-        Bevor docker den Container ausführt, wird zunächst geprüft, ob das Image überhaupt lokal verfügbar ist.<br />
+        Bevor Docker den Container ausführt, wird zunächst geprüft, ob das Image überhaupt lokal verfügbar ist.<br />
         Anhand der ersten Zeile können wir sehen, dass das Image auf dem Host lokal zunächst noch nicht vorhanden ist. Kein Wunder, wir haben ja auch kurz zuvor erst unsere Serverinstanz erzeugt.
-        Interessant an der ersten Zeile ist jedoch auch, dass unserer Angabe zum Image <b>:latest</b> angefügt wurde.
+        Interessant an der ersten Zeile ist jedoch auch, dass unserer Angabe <code class="highlight">:latest</code> angefügt wurde.
         Darüber wird das Tag des Images (dessen Name) bestimmt. Da wir in unserem Befehl kein Tag angegeben haben, verwendet docker standardmässig das Tag 'latest'.
-        Im docker hub bekommt jeder Benutzer einen eigenen Bereich für seine Sammlung von Repositories. Der Name entspricht der Docker ID.
-        Mit der Angabe von <b>maddev77</b> beziehen wir uns also auf meine Sammlung von Repositories.<br />
+        Im Docker Hub bekommt jeder Benutzer einen eigenen Bereich für seine Sammlung von Repositories. Der Name entspricht der Docker ID.
+        Mit der Angabe von <code class="highlight">maddev77</code> beziehen wir uns also auf meine Sammlung von Repositories.<br />
         Anhand der zweiten Zeile erkennen wir, das das Image aus der Registry heruntergeladen wird.
         Die nächsten Zeilen geben uns Auskunft über den Status des Downloads. Unser Image besteht aus mehreren Layern, deshalb erhalten wir zu jedem Layer eine entsprechende Ausgabe.
         Die Funktionsweise von Images und Layern soll uns derzeit aber erstmal noch nicht interessieren. Hierüber später mehr.
