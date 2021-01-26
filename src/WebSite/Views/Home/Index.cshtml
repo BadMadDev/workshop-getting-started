@@ -1,13 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Erste Schritte";
 }
 
 <div class="text-center">
     <h1 class="display-4">Willkommen beim Docker Workshop</h1>
     <h3>Wenn du diese Seite siehst hast du die ersten Schritte bereits erfolgreich absolviert. Gratulation!</h3>
 </div>
+
 <div class="text-left">
-    <h5>Fassen wir kurz zusammen was wir bisher durchgeführt haben:</h5>
+    <h2>Zusammenfassung</h2>
+    <p>Fassen wir kurz zusammen was wir bisher durchgeführt haben:</p>
     <ul>
         <li>Kurze Einführung und Geschichte zu Containern, speziell Docker</>
         <li>Erstellung einen Docker Accounts</li>
@@ -16,34 +18,13 @@
     </ul>
 
     <p>
-        Schauen wir uns jetzt den Befehl, den wir zum Starten des Containers verwendet haben einmal genauer an.<br />
-        docker run an sich ist der Befehl um docker mitzuteilen einen Container zu starten. Dabei haben wir eine Ausgabe erhalten, die dem Folgenden ähnelt:<br />
-        <div class="badge-dark">
-            <div role="listitem" tabindex="-1" aria-posinset="22" aria-setsize="42" style="height: 17px;">$ docker run -d -p 80:80 maddev77/workshop-getting-started</div>
-            <div role="listitem" tabindex="-1" aria-posinset="23" aria-setsize="42" style="height: 17px;">Unable to find image 'maddev77/workshop-getting-started:latest' locally</div>
-            <div role="listitem" tabindex="-1" aria-posinset="24" aria-setsize="42" style="height: 17px;">latest: Pulling from maddev77/workshop-getting-started</div>
-            <div role="listitem" tabindex="-1" aria-posinset="25" aria-setsize="42" style="height: 17px;">a076a628af6f: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="26" aria-setsize="42" style="height: 17px;">e79f147a4676: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="27" aria-setsize="42" style="height: 17px;">9b3ac742235a: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="28" aria-setsize="42" style="height: 17px;">f6dc7f655a1d: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="29" aria-setsize="42" style="height: 17px;">f9544f1b1fca: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="30" aria-setsize="42" style="height: 17px;">abcfcb76880c: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="31" aria-setsize="42" style="height: 17px;">e82cfa1a6cd6: Pull complete </div>
-            <div role="listitem" tabindex="-1" aria-posinset="32" aria-setsize="42" style="height: 17px;">Digest: sha256:a37b1bcd240d48fe1aa4f3f83da4c8cf410a8f6900a530afe94a610741a2b8f1</div>
-            <div role="listitem" tabindex="-1" aria-posinset="33" aria-setsize="42" style="height: 17px;">Status: Downloaded newer image for maddev77/workshop-getting-started:latest</div>
-            <div role="listitem" tabindex="-1" aria-posinset="34" aria-setsize="42" style="height: 17px;">6a5681b1bba27b4481e39e08625cbc8889d0234e4f2e78b283ada0d9beda22d0</div>
-        </div>
-    </p>
-    <p>
-        Bevor docker den Container ausführt, wird zunächst geprüft, ob das Image überhaupt lokal verfügbar ist.<br />
-        Anhand der ersten Zeile können wir sehen, dass das Image auf dem Host lokal zunächst noch nicht vorhanden ist. Kein Wunder, wir haben ja auch kurz zuvor erst unsere Serverinstanz erzeugt.
-        Interessant an der ersten Zeile ist jedoch auch, dass unserer Angabe zum Image <code>:latest</code> angefügt wurde.
-        Darüber wird das Tag des Images bestimmt. Da wir in unserem Befehl kein Tag angegeben haben, verwendet docker standardmässig das Tag 'latest'.
-        Anhand der zweiten Zeile erkennen wir, das das Image aus der Registry heruntergeladen wird.
-        Die nächsten Zeilen geben uns Auskunft über den Status des Downloads. Unser Image besteht aus mehreren Layern, deshalb erhalten wir zu jedem Layer eine entsprechende Ausgabe.
-        Die Funktionsweise von Images und Layern soll uns derzeit aber erstmal noch nicht interessieren. Hierüber später mehr.
-        Für den Moment ist es ausreichend zu wissen, dass eine Image-Datei aus mehreren Schichten bestehen kann.<br />
+        Doch was macht der von uns soeben eingegebene Befehl eigentlich? Genau das schauen wir uns im nächsten Schrttitt einmal an.
     </p>
 
-    <p>Werfen wir jetzt einen Blick auf das Repository für den Container auf <a href="https://hub.docker.com/u/maddev77">docker hub</a>.</p>
+    <h2 id="next-steps">Nächste Schritte</h2>
+    <ul>
+        <li>Erfahre mehr über den Befehl <code class="highlight">docker run</code> in <a href="./Tutorial/Index/">Schritt 1: Eine kurze Erläuterung</a></li>
+    </ul>
+
 </div>
+

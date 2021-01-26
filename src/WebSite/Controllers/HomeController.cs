@@ -23,7 +23,7 @@ namespace WebSite
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Persistence()
         {
             return View();
         }
