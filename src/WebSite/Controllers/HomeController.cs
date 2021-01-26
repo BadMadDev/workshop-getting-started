@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using workshop_getting_started.Models;
+using WebSite.Models;
 
-namespace workshop_getting_started.Controllers
+namespace WebSite
 {
     public class HomeController : Controller
     {

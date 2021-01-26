@@ -1,6 +1,6 @@
 using System;
 
-namespace workshop_getting_started.Models
+namespace WebSite.Models
 {
     public class ErrorViewModel
     {

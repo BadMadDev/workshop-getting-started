@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>workshop_getting_started</RootNamespace>
+    <RootNamespace>WebSite</RootNamespace>
     <UserSecretsId>f9d2762e-143f-4631-8639-c3bd0f5bc793</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
