@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  workshop-getting-started-website:
+    image: ${REGISTRY:-maddev77}/pricing.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: WebSite/Dockerfile
