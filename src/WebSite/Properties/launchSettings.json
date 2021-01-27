@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "USE_SQL_SERVER": "true",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },

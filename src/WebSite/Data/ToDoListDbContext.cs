@@ -10,15 +10,9 @@ namespace WebSite.Data
     {
         public DbSet<ToDoListItem> ToDos { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ToDoListDbContext(DbContextOptions<ToDoListDbContext> options) : base(options)
         {
-            var connectionString = "DataSource=ToDoList.db";
 
-            Directory.CreateDirectory(@"/var/data");
-            var builder = new SqliteConnectionStringBuilder(connectionString);
-            builder.DataSource = Path.Combine(@"/var/data",
-                builder.DataSource);
-            optionsBuilder.UseSqlite(builder.ToString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

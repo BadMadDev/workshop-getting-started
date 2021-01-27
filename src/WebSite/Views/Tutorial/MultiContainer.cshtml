@@ -13,10 +13,14 @@
     <p>
         In diesem Kapitel widmen wir uns der Ausführung zweier Container-Anwendungen, die miteinander über das Netzwerk kommunizieren.<br/>
         Dazu rufen wir uns zunächst wieder ins Gedächnis: Container laufen isoliert.<br/>
-        Für dieses Fall bedeutet dies: Ein Container kann zunächst nicht über die vorhandenen Netzwerkschnittstellen zugreifen.<br/>
-        Dies gilt generell auch für den Zugriff auf den Container vom Host aus.<br/>
-        Mittels einer Portveröffentlichung konnten wir dies in den vergangenen Schritten jedoch bereits tun.<br/>
-        Der Grund dafür ist, dass Docker standardmäßig bereits ein so genanntes Bridge-Netzwerk bereitstellt.
+        Für dieses Fall bedeutet dies: Ein Container kann zunächst nicht mit anderen kommunizieren.<br/>
+        Die Lösung hierfür lautet: Networking<br/>
+    </p>
+    
+    <p>
+        Damit Container untereinander kommunizieren können müssen diese Bestandteil des gleichen Netzwerken sein. <br/>
+        Wir merken uns dazu einfach die folgende Regel:<br/>
+        Wenn zwei Container im selben Netzwerk sind können sie untereinander kommunizieren. Wenn nicht, dann nicht!
     </p>
     
     <h2>Erstellen eines Netzwerkes für die Kommunikation der Container untereinander</h2>
@@ -32,7 +36,14 @@
     </p>
     <h2>Schritt-für-Schritt Anleitung</h2>
     <ol>
-        <li></li>
+        <li>
+            Erstellen eines benannten Netzwerkes
+            <code class="highlight">docker network create todo-net</code>
+        </li>
+        <li>
+            Starten von SQL-Server und verbinden mit dem Netzwerk
+            <code class="highlight">docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd123!' -p 1433:1433 -d --network todo-net --network-alias sqldb mcr.microsoft.com/mssql/server:2019-latest</code>
+        </li>
     </ol>
 
     <h2 id="next-steps">Nächste Schritte</h2>
