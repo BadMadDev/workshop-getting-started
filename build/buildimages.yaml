@@ -8,7 +8,7 @@ jobs:
 - job: BuildLinux
     condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
     pool:
-    vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-16.04'
   steps:
   - task: DockerCompose@0
     displayName: Compose build ${{ parameters.services }}
