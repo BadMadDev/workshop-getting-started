@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Persistence";
+}
+
+
+<div class="text-center">
+    <h2 class="display-4">Tutorial</h2>
+    <h3>Schritt 2: Persistenz</h3>
+</div>
+
+<div class="text-left">
+    <h2>Container Volumes: Bind Mounts</h2>
+    <p>
+        Die zweite Art von Volume ermöglicht uns, ein Verzeichnis auf dem Host an ein Verzeichnis im Container zu binden.</br>
+        Dazu führen wir die folgenden Schritte aus:
+        <ol>
+            <li>
+                Zunächst löschen wir unsere vorhandene Serverinstanz und starten eine neue.<br/>
+            </li>
+            <li>
+                Anlegen des Verzeichnis, welches wir für das Mapping verwenden wollen:
+                <code class="highlight">mkdir /root/database</code>
+            </li>
+            <li>
+                Starten einer neuen Containerinstanz. Diesmal verbinden wir das eben erstellte Verzeichnis auf dem Host mit unserer Containerinstanz.<br/>
+                <code class="highlight">docker run -d -p 80:80 -v /root/database:/var/data maddev77/workshop-getting-started</code>
+            </li>
+            <li>
+                Beim ersten Start des Containers wird die zu verwendende Sqlite-Datenbank erstellt.<br/>
+                Wenn wir uns das Verzeichnis auflisten lassen, sehen wir bereits die erstellte Datenbank.
+                <code class="highlight">ls /root/database</code> listet uns die Datei <code class="highlight">ToDoList.db</code> auf.
+            </li>
+        </ol>
+    </p>
+
+    <h2 id="next-steps">Nächste Schritte</h2>
+    <ul>
+        <li>Anwendungen die aus mehreren Containern bestehen: <a href="./MultiContainer">Schritt 3: Einführung in Docker-Netzwerke</a></li>
+    </ul>
+
+</div>

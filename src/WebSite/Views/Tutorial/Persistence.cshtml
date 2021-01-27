@@ -53,45 +53,9 @@
         <code class="highlight">docker rm WebSite2 --force</code>
     </p>
 
-    <h2>Container Volumes</h2>
-    <p>
-        Um einen Container die Möglichkeit zu geben, Daten auch über seinen Lebenszyklus zu speichern, ist es möglich, dem Container so genannte <b>Volumes</b> zuzuordnen.<br/>
-        Dabei gibt es von Haus aus zwei Arten von Volumes. Über Volume-Treiber ist es möglich weitere Arten einzubinden.<br/>
-        Wir starten einfach mal mit den benanntenn Volumes:<br/>
-        Unsere Anwendung speichert ihre Daten innerhalb des Containers in dem Unterverzeichnis <code class="highlight">/var/data</code>.<br/>
-        Wir haben jetzt die Möglichkeit ein Volume an ein Verzeichnis zu binden.<br/>
-        Dazu führen wir folgende Schritte aus:<br/>
-        <ol>
-            <li>
-                Erzeugen einen benannten Volumes<br/>
-                <code class="highlight">docker volume create todo-db</code><br/>
-            </li>
-            <li>
-                Starten einer neues Containerinstanz inkl. verbundenem Volume<br/>
-                <code class="highlight">docker run -d -p 80:80 -v todo-db:/var/data --name WebSite1 maddev77/workshop-getting-started</code>
-                Mit dem Parameter <code class="highlight">-v</code> binden wir das zuvor erstellte Volumen an das Verzeichnis im Container rechts vom Doppelpunkt.
-            </li>
-            <li>
-                Aufruf der Website und erfassen einiger Einträge in unserer To-Do-Liste
-            </li>
-            <li>
-                Beenden und Löschen unserer Containerinstanz<br/>
-                <code class="highlight">docker rm WebSite1 --force</code>
-            </li>
-            <li>
-                Erstellen und starten einen neuen Containerinstanz<br />
-                <code class="highlight">docker run -d -p 80:80 -v todo-db:/var/data --name WebSite1 maddev77/workshop-getting-started</code>
-            </li>
-            <li>
-                Aufruf unserer To-Do-Liste<br/>
-                Voila! Wir sehen in der neuen Instanz unsere erfassten Daten.
-            </li>
-        </ol>
-    </p>
-
     <h2 id="next-steps">Nächste Schritte</h2>
     <ul>
-        <li>To be continued... <a href="./Home/Index">Zurück zum Anfang</a></li>
+        <li>Container Volumnes: <a href="./Persistence1">Named Volumes</a></li>
     </ul>
 
 </div>
