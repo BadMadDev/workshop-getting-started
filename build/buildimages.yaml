@@ -29,8 +29,7 @@ jobs:
       dockerComposeFile: src/docker-compose.yml
       qualifyImageNames: true
       projectName: ""
-      dockerComposeFileArgs: |
-        TAG=${{ variables['Build.SourceBranchName'] }} 
+      dockerComposeFileArgs: ""
 - job: BuildWindows
   condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
   pool:
