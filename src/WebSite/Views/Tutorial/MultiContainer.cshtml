@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Persistence";
+}
+
+
+<div class="text-center">
+    <h2 class="display-4">Tutorial</h2>
+    <h3>Schritt 3: Einführung in Docker-Netzwerke</h3>
+</div>
+
+<div class="text-left">
+    <p>
+        In diesem Kapitel widmen wir uns der Ausführung zweier Container-Anwendungen, die miteinander über das Netzwerk kommunizieren.<br/>
+        Dazu rufen wir uns zunächst wieder ins Gedächnis: Container laufen isoliert.<br/>
+        Für dieses Fall bedeutet dies: Ein Container kann zunächst nicht über die vorhandenen Netzwerkschnittstellen zugreifen.<br/>
+        Dies gilt generell auch für den Zugriff auf den Container vom Host aus.<br/>
+        Mittels einer Portveröffentlichung konnten wir dies in den vergangenen Schritten jedoch bereits tun.<br/>
+        Der Grund dafür ist, dass Docker standardmäßig bereits ein so genanntes Bridge-Netzwerk bereitstellt.
+    </p>
+    
+    <h2>Erstellen eines Netzwerkes für die Kommunikation der Container untereinander</h2>
+    <p>
+        In den nächsten Schritten bedienen wir uns einer Lösung, die aus 2 Containeranwendungen besteht.<br/>
+        Die erste Anwendung ist ein Web-Frontend, die als Benutzerschnittstelle für  die Verwaltung von To-Do-Einträge dient.<br/>
+        Wir kennen diese ja bereits aus den bisherigen Schritten.<br/>
+        Diesmal allerdings werden wir die bestehende Anwendung so konfigurieren, dass diese ihre Daten in einer eigenen SQL-Datenbank speichert, dazu also mit einem Microsoft SQL-Server kommunizieren muss.
+    </p>
+    <p>
+        Von Microsoft wird der SQL-Server auch als Docker-Image bereitgestellt.<br/>
+        Für unser Tutorial verwenden wir das Linux-Image für den SQL-Server 2019 als zweite Container-Anwendung.<br/>
+    </p>
+    <h2>Schritt-für-Schritt Anleitung</h2>
+    <ol>
+        <li></li>
+    </ol>
+
+    <h2 id="next-steps">Nächste Schritte</h2>
+    <ul>
+        <li>Container Volumnes: <a href="./Persistence1">Named Volumes</a></li>
+    </ul>
+
+</div>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace WebSite.Controllers
 {
@@ -14,6 +10,21 @@ namespace WebSite.Controllers
         }
 
         public IActionResult Persistence()
+        {
+            return View();
+        }
+
+        public IActionResult Persistence1()
+        {
+            return View();
+        }
+        
+        public IActionResult Persistence2()
+        {
+            return View();
+        }
+
+        public IActionResult MultiContainer()
         {
             return View();
         }
