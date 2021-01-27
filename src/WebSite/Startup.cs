@@ -30,11 +30,11 @@ namespace WebSite
         {
             if (Configuration.GetValue<bool>("USE_SQL_SERVER", false))
             {
-                services.AddDbContext<ToDoListDbContext>(ConfigureSqlServer);
+                services.AddDbContext<ToDoListDbContext, ToDoListSqlDbContext>();
             }
             else
             {
-                services.AddDbContext<ToDoListDbContext>(ConfigureSqlite);
+                services.AddDbContext<ToDoListDbContext>();
             }
 
             services.AddControllersWithViews();

@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebSite.Migrations
+namespace WebSite.Migrations.ToDoListSqlDb
 {
     public partial class Initial : Migration
     {
@@ -12,7 +11,7 @@ namespace WebSite.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(nullable: true),
                     IsDone = table.Column<bool>(nullable: false)
                 },

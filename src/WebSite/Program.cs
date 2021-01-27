@@ -14,7 +14,7 @@ namespace WebSite
 
             using (var scope = host.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetRequiredService<ToDoListDbContext>();
+                var db = scope.ServiceProvider.GetService<ToDoListDbContext>();
         
                 db.Database.Migrate();
             }

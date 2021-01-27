@@ -9,3 +9,5 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "9900:80"
+    environment:
+      - USE_SQL_SERVER=true

@@ -8,7 +8,7 @@ using WebSite.Data;
 namespace WebSite.Migrations
 {
     [DbContext(typeof(ToDoListDbContext))]
-    [Migration("20210127124953_Initial")]
+    [Migration("20210127181413_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
