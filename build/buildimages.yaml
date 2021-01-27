@@ -4,9 +4,10 @@ parameters:
   helmfrom: ''
   helmto: ''
 
+jobs:
 - job: BuildLinux
-  condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
-  pool:
+    condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
+    pool:
     vmImage: 'ubuntu-16.04'
   steps:
   - task: DockerCompose@0
