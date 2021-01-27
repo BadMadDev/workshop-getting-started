@@ -19,8 +19,7 @@ jobs:
       dockerComposeFile: src/docker-compose.yml
       qualifyImageNames: true
       projectName: ""
-      dockerComposeFileArgs: |
-        TAG=${{ variables['Build.SourceBranchName'] }}
+      dockerComposeFileArgs: ""
   - task: DockerCompose@0
     displayName: Compose push ${{ parameters.images }}
     inputs:
@@ -47,7 +46,6 @@ jobs:
       qualifyImageNames: true
       projectName: ""
       dockerComposeFileArgs: |
-        TAG=${{ variables['Build.SourceBranchName'] }}
         PLATFORM=win
         NODE_IMAGE=stefanscherer/node-windows:10
   - task: DockerCompose@0
@@ -60,5 +58,4 @@ jobs:
       qualifyImageNames: true
       projectName: ""
       dockerComposeFileArgs: |
-        TAG=${{ variables['Build.SourceBranchName'] }}
         PLATFORM=win  
