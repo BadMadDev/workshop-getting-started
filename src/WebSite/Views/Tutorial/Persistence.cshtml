@@ -21,8 +21,73 @@
     </p>
     
     <h2>Schauen wir uns das einmal genauer an</h2>
+    <p>
+        Dazu starten wir zunächst eine neue Serverinstanz über <code class="highlight">+ ADD NEW INSTANCE</code><br/>
+        Danach starten wir auf der neuen Instanz unseren Container mittels <code class="highlight">docker run -d -p 80:80 maddev77/workshop-getting-started</code>
+        Wie bekannt öffnen wir jetzt die Website und wählen <code class="highlight">To Do</code>. Hier erfassen wir einfach mal 1-2 Einträge<br/>
+        Wenn wir den Container herunterfahren und neu starten, werden wir zunächst wieder die Einträge sehen können.<br/>
+        Um den Container herunterzufahren müssen wir erstmal den Namen des Containers ermitteln. Docker vergibt einen zufällig generierten Namen für jede Containerinstanz, wenn kein Name spezifiziert wird.<br/>
+        Optional kann man den Namen über den Parameter <code class="highlight">--name</code> spezifizieren.<br/>
+        Stellen wir aber zunächst den vergebenen Containernamen fest indem wir uns eine Listeder Container ausgeben lassen: <code class="highlight">docker container ls</code> listet die laufenden Container auf.
+        Jetzt können wir Containerinstanz über den Namen löschen.<br/>
+        Dazu verwenden wir den Befehl: <code class="highlight">docker rm &lt;CONTAINER_NAME&gt; --force</code>
+        Mit dem Parameter <code class="highlight">--force</code> erzwingen wir das Entfernen, auch wenn der Container noch gestartet ist.
+        Alternativ dazu könnten wir den Container zunächst mittels <code class="highlight">docker stop &lt;CONTAINER_NAME&gt;</code> stoppen.
+    </p>
+    <p>
+        Durch das Entfernen sind jetzt auch die Einträge nicht mehr vorhanden.<br/>
+        Prüfen wir das einfach durch einen neuen Aufruf. Dazu verwenden wir den uns mittlerweile vertrautem Aufruf: <code class="highlight">docker run -d -p 80:80 --name WebSite1 maddev77/workshop-getting-started</code><br/>
+    </p>
+    <p>
+        Um zu sehen, dass das Dateisystem auch zwischen mehreren Instanzen nicht geteilt wird, erfassen wir zunächst in der laufenden Instanz 1-2 neue Einträge.
+        Als nächstes starten wir eine weitere Instanz unseres Containers. Dieses binden wir an den Port 90, da der Port 80 durch die erste Instanz belegt ist.
+        Der Vollständigkeithalber vergeben wir für die zweite Instanz einfach mal einen eigenen Namen.
+        Dies erreichen wir über <code class="highlight">docker run -d -p 90:80 maddev77/workshop-getting-started --name WebSite2</code><br/>
+        In dem o.a. Bespiel wird Name <code class="highlight">WebSite2</code> verwendet.
+        Wenn wir jetzt die Website über Port 90 öffnen und <code class="highlight">To do</code> wählen, sehen wir eine leere Liste. <br/>
+        Der Grund dafür ist, dass das Dateisystem zwischen den Container isoliert läuft.<br/>
+    </p>
+    <p>
+        Für die nächsten Schritte löschen wir zunächst unsere zwei erstellten Containerinstanzen.
+        <code class="highlight">docker rm WebSite1 --force</code>
+        <code class="highlight">docker rm WebSite2 --force</code>
+    </p>
 
     <h2>Container Volumes</h2>
+    <p>
+        Um einen Container die Möglichkeit zu geben, Daten auch über seinen Lebenszyklus zu speichern, ist es möglich, dem Container so genannte <b>Volumes</b> zuzuordnen.<br/>
+        Dabei gibt es von Haus aus zwei Arten von Volumes. Über Volume-Treiber ist es möglich weitere Arten einzubinden.<br/>
+        Wir starten einfach mal mit den benanntenn Volumes:<br/>
+        Unsere Anwendung speichert ihre Daten innerhalb des Containers in dem Unterverzeichnis <code class="highlight">/var/data</code>.<br/>
+        Wir haben jetzt die Möglichkeit ein Volume an ein Verzeichnis zu binden.<br/>
+        Dazu führen wir folgende Schritte aus:<br/>
+        <ol>
+            <li>
+                Erzeugen einen benannten Volumes<br/>
+                <code class="highlight">docker volume create todo-db</code><br/>
+            </li>
+            <li>
+                Starten einer neues Containerinstanz inkl. verbundenem Volume<br/>
+                <code class="highlight">docker run -d -p 80:80 -v todo-db:/var/data --name WebSite1 maddev77/workshop-getting-started</code>
+                Mit dem Parameter <code class="highlight">-v</code> binden wir das zuvor erstellte Volumen an das Verzeichnis im Container rechts vom Doppelpunkt.
+            </li>
+            <li>
+                Aufruf der Website und erfassen einiger Einträge in unserer To-Do-Liste
+            </li>
+            <li>
+                Beenden und Löschen unserer Containerinstanz<br/>
+                <code class="highlight">docker rm WebSite1 --force</code>
+            </li>
+            <li>
+                Erstellen und starten einen neuen Containerinstanz<br />
+                <code class="highlight">docker run -d -p 80:80 -v todo-db:/var/data --name WebSite1 maddev77/workshop-getting-started</code>
+            </li>
+            <li>
+                Aufruf unserer To-Do-Liste<br/>
+                Voila! Wir sehen in der neuen Instanz unsere erfassten Daten.
+            </li>
+        </ol>
+    </p>
 
     <h2 id="next-steps">Nächste Schritte</h2>
     <ul>
