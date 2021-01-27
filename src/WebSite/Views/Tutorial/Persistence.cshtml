@@ -9,3 +9,24 @@
     <h3>Schritt 2: Persistenz</h3>
 </div>
 
+<div class="text-left">
+    <p>
+        Bevor wir uns mit der Persistenz von Container genauer beschäftigen, errinern wir uns zunächst noch einmal an Folgendes:<br/>
+        Container laufen isoliert.<br/>
+        In unserem konkreten Fall bzgl. der Peristenz bedeutet dies, dass das Dateisystem des Containers ebenfalls isoliert ist.<br/>
+        Das inkludiert auch Container untereinander. Was bedeutet, dass zwei Containerinstanzen, auch wenn sie vom gleichen Image erstellt wurden, kein Zugriff auf das Dateisystem des anderen Containers haben.<br/>
+        Da das  Dateisystem Bestandteil des Containers ist, werden alle Dateien und somit Daten ebenfalls gelöscht, wenn der Container gelöscht wird.<br/>
+        Für zustandslose Anwendungen ideal. Aber was machen wir bei Anwendungen, die Zustände dauerhaft persistieren müssen?
+        Bevor wir uns mit der Lösung beschäftigen,  überprüfen wir zuerst einmal die getätigten Aussagen.
+    </p>
+    
+    <h2>Schauen wir uns das einmal genauer an</h2>
+
+    <h2>Container Volumes</h2>
+
+    <h2 id="next-steps">Nächste Schritte</h2>
+    <ul>
+        <li>To be continued... <a href="./Home/Index">Zurück zum Anfang</a></li>
+    </ul>
+
+</div>
