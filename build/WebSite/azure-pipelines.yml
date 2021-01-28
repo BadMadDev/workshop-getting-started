@@ -1,6 +1,5 @@
 variables:
     registryEndpoint: maddev77-registry
-    BuildId: $(Build.BuildId)
 trigger:
   branches:
     include:
@@ -13,9 +12,6 @@ jobs:
   parameters:
     services: workshop-getting-started-website
     registryEndpoint: $(registryEndpoint)
-    buildId: $(BuildId)
-    helmfrom: $(Build.SourcesDirectory)/k8s/helm
-    helmto: $(Build.ArtifactStagingDirectory)/k8s/helm
 - template: ../multiarch.yaml
   parameters:
     image: workshop-getting-started
