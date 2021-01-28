@@ -28,6 +28,7 @@ jobs:
      docker cp testcontainer:/testresults ./testresults
      docker rm testcontainer
     displayName: 'Copy test results' 
+    condition: succeededOrFailed()
   - task: PublishTestResults@2
     inputs:
       testResultsFormat: 'VSTest'

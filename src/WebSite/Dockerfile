@@ -27,5 +27,5 @@ RUN dotnet publish --no-restore -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/pubnlish .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebSite.dll"]
