@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design.Serialization;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Constraints;
 
@@ -20,7 +21,7 @@ namespace WebSite.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Persistence2()
         {
             return View();
@@ -34,6 +35,13 @@ namespace WebSite.Controllers
         public IActionResult DockerComposeIntro()
         {
             return View("docker-compose-intro");
+
         }
+
+        public IActionResult Portainer()
+        {
+            return View();
+        }
+
     }
 }
