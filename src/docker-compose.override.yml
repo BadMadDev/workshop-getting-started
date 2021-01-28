@@ -10,4 +10,4 @@ services:
     ports:
       - "9900:80"
     environment:
-      - USE_SQL_SERVER=true
+      - USE_SQL_SERVER=false

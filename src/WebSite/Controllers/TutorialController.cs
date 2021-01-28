@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.Design.Serialization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace WebSite.Controllers
 {
@@ -27,6 +29,11 @@ namespace WebSite.Controllers
         public IActionResult MultiContainer()
         {
             return View();
+        }
+
+        public IActionResult DockerComposeIntro()
+        {
+            return View("docker-compose-intro");
         }
     }
 }
