@@ -17,6 +17,11 @@ COPY "WebSite.Tests/WebSite.Tests.csproj" "WebSite.Tests/WebSite.Tests.csproj"
 
 RUN dotnet restore "WebSite.sln"
 
+COPY . .
+
+WORKDIR /src
+RUN dotnet build "WebSite.sln" -c Releease -o /app/build --no-restore
+
 FROM build AS test
 ARG BuildId
 LABEL test=${BuildId}
@@ -27,9 +32,9 @@ FROM build AS publish
 
 COPY . .
 WORKDIR /src/WebSite
-RUN dotnet publish --no-restore -c Release -o /app
+RUN dotnet publish --no-restore -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=publish /app/pubnlish .
 ENTRYPOINT ["dotnet", "WebSite.dll"]
