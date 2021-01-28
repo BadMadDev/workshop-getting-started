@@ -11,17 +11,35 @@
 
 <div class="text-left">
     <p>
-        In diesem Kapitel widmen wir uns der Ausführung zweier Container-Anwendungen, die miteinander über das Netzwerk kommunizieren.<br/>
-        Dazu rufen wir uns zunächst wieder ins Gedächnis: Container laufen isoliert.<br/>
-        Für dieses Fall bedeutet dies: Ein Container kann zunächst nicht mit anderen kommunizieren.<br/>
-        Die Lösung hierfür lautet: Networking<br/>
+        Docker Compose ist ein Tool das dazu entwickelt wurde, Lösungen aus mehreren Containern zu beschreiben und zu teilen.<br/>
+        Mit Docker Compose können wir eine einzele YAML Datei erstellen, die unsere Anwendung definiert und über ein einzelnes Kommando starten, beenden und aktualisieren kann.
+    </p>
+
+    <h2>Installation von Docker Compose</h2>
+    <p>
+        Mit der Installation von Docker auf Windows oder Mac wurde ebenfalls Docker Compose installiert.<br/>
+        Für Linux findet man die <a href="https://docs.docker.com/compose/install/"> Installation-Anweisung hier</a>.<br/>
+        Auf unserem Playground ist Docker Compose ebenfalls bereits installiert.
+    </p>
+    
+    <h2>Erzeugen einer Docker Compose Datei</h2>
+    <p>
+        To be continued...<br/><br/>
     </p>
     
     <p>
-        Damit Container untereinander kommunizieren können müssen diese Bestandteil des gleichen Netzwerken sein. <br/>
-        Wir merken uns dazu einfach die folgende Regel:<br/>
-        Wenn zwei Container im selben Netzwerk sind können sie untereinander kommunizieren. Wenn nicht, dann nicht!
+        Der Einfachkeit halber habe ich eine Docker Compose Datei für unsere Anwendung bereits erstellt.<br/>
+        Gucken wir uns diese einmal im Detail an.<br/>
+        Der Quellcode zu unseren Anwendung und der darin enthalten Docker Compose Datei ist auf <a href="">GitHub</a> verfügbar.<br/>
+        Da wir für die weiteren Schritte wie z.B. Continious Integration (CI) und Continous Deployment (CD) das Repository benötigen ist dies ein guter Zeitpunkt für den Download.
+        <ol>
+            <li>
+                Abrufen des Repoitories mittels git<br/>
+                <code class="highlight">git clone https://github.com/BadMadDev/workshop-getting-started.git</code>
+            </li>
+        </ol>
     </p>
+    
     
     <h2>Erstellen eines Netzwerkes für die Kommunikation der Container untereinander</h2>
     <p>
