@@ -13,13 +13,20 @@ COPY "docker-compose.dcproj" "docker-compose.dcproj"
 
 COPY "NuGet.config" "NuGet.config"
 
+COPY "WebSite.Tests/WebSite.Tests.csproj" "WebSite.Tests/WebSite.Tests.csproj"
+
 RUN dotnet restore "WebSite.sln"
+
+FROM build AS test
+ARG BuildId
+LABEL test=${BuildId}
+
+
+FROM build AS publish
 
 COPY . .
 WORKDIR /src/WebSite
 RUN dotnet publish --no-restore -c Release -o /app
-
-FROM build AS publish
 
 FROM base AS final
 WORKDIR /app

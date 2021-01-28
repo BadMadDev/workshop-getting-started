@@ -3,8 +3,12 @@ parameters:
   registryEndpoint: ''
   helmfrom: ''
   helmto: ''
+  buildId: ''
+
 
 jobs:
+- job: Running tests
+
 - job: BuildLinux
   condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
   pool:
@@ -19,7 +23,19 @@ jobs:
       dockerComposeFile: src/docker-compose.yml
       qualifyImageNames: true
       projectName: ""
-      dockerComposeFileArgs: ""
+      dockerComposeFileArgs: '--build-arg BuildId=${{ parameters.buildId }}'
+  - pwsh: |
+     $id=docker images --filter "label=test=${{ parameters.buildId }}" -q | Select-Object -First 1
+     docker create --name testcontainer $id
+     docker cp testcontainer:/testresults ./testresults
+     docker rm testcontainer
+    displayName: 'Copy test results' 
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+      searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
+    displayName: 'Publish test results'      
   - task: DockerCompose@0
     displayName: Compose push ${{ parameters.images }}
     inputs:
