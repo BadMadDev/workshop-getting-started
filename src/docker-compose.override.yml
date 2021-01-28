@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 
 # The default docker-compose.override file can use the "localhost" as the external name for testing web apps within the same dev machine.
 # but values present in the environment vars at runtime will always override those defined inside the .env file
