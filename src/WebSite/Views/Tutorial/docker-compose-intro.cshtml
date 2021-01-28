@@ -24,9 +24,103 @@
     
     <h2>Erzeugen einer Docker Compose Datei</h2>
     <p>
-        To be continued...<br/><br/>
+        Die wenigsten werden eine Docker Compose Datei von Grund auf neu erstellen, oft liefern Multi-Container-Lösungen diese bereits mit und das Thema richtig sich eher an Entwickler.<br/>
+        Dennoch sollten wir zum besseren Verständnis einmal beispielshaft eine solche Datei von Grnd auf im Groben erstellen.
     </p>
     
+    <h4>Erstellen der Docker Compose Datei</h4>
+    <ol>
+        <li>
+            Anlegen einer leeren Datei<br/>
+            <code class="highlight">cat >docker-compose.yml</code>
+        </li>
+        <li>
+            Bearbeiten der Datei im Editor
+            Über die <code class="highlight">EDITOR</code> Schaltfläche den Editor aufrufen<br/>
+            und die erstellte Datei auf der linken Seite anklicken
+        </li>
+        <li>
+            Wir starten mit der Angabe der Schema Version. In den meisten Fällen ist es am Besten die aktuell neueste Version zu nutzen.
+        <code class="highlight">version: '3.8'</code>
+        </li>
+    </ol>
+
+    <h4>Definieren der Anwendungsdienste</h4>
+    <p>
+        Rufen wir uns zunächst den Befehl zum Starten unseres Containers ins Gedächnis:
+        <code class="highlight">docker run -d -p 80:80 --network todo-net -e USE_SQL_SERVER=true maddev77/workshop-getting-started</code>
+        <ol>
+            <li>
+                Zuerst müssen wir den Diensteintrag und das Image definieren<br />
+                <div class="highlight">
+                    <code class="highlight">version: '3.8'</code><br />
+                    <code class="highlight">services:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">app:</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">image: maddev77/workshop-getting-started:linux-latest</code></div>
+                </div>
+            </li>
+            <li>
+                Als nächsten definieren wir unser Port-Mapping
+                <div class="highlight">
+                    <code class="highlight">version: '3.8'</code><br />
+                    <code class="highlight">services:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">app:</code></div>
+                    <div style="text-indent:20px;"><code class="highlight"></code>image: maddev77/workshop-getting-started:linux-latest</div>
+                    <div style="text-indent:20px;"><code class="highlight"></code>ports:</div>
+                    <div style="text-indent:30px;"><code class="highlight"></code>- 80:80</div>
+                </div>
+            </li>
+            <li>
+                Dann definieren wir das Netzwerk
+                <div class="highlight">
+                    <code class="highlight">version: '3.8'</code><br />
+                    <code class="highlight">services:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">app:</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">image: maddev77/workshop-getting-started:linux-latest</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">ports:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- 80:80</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">networks:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- todo-net</code></div>
+                </div>
+            </li>
+            <li>
+                Und noch die Umgebungsvariable
+                <div class="highlight">
+                    <code class="highlight">version: '3.8'</code><br />
+                    <code class="highlight">services:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">app:</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">image: maddev77/workshop-getting-started:linux-latest</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- 80:80</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">networks:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- todo-net</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">environment:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">USE_SQL_SERVER=true</code></div>
+                </div>
+            </li>
+            <li>
+                Zu guter Letzt müssen wir noch die zu erstellen Netzwerke bekannt geben
+                <div class="highlight">
+                    <code class="highlight">version: '3.8'</code><br />
+                    <code class="highlight">services:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">app:</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">image: maddev77/workshop-getting-started:linux-latest</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">ports:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- 80:80</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">networks:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">- todo-net</code></div>
+                    <div style="text-indent:20px;"><code class="highlight">environment:</code></div>
+                    <div style="text-indent:30px;"><code class="highlight">USE_SQL_SERVER=true</code></div>
+                    <code class="highlight">networks:</code><br />
+                    <div style="text-indent:10px;"><code class="highlight">todo-net:</code></div><br />
+                    Hier können auch verschiedene Konfigurationparameter für das Netzwerk definiert werden.
+                    Ähnliches gilt auch für Volumes.
+                </div>
+            </li>
+        </ol>
+        Das Ganze müssen wir entsprechend noch für den SQL-Server durchführen. Aber genug der Handarbeit...
+    </p>
+    
+    <h3>Anwenden der Docker Compose Datei</h3>
     <p>
         Eine Docker Compose Datei für die Bereitstellung unserer Anwendung habe ich bereits erstellt.<br/>
         Gucken wir uns diese einmal im Detail an.<br/>
@@ -69,7 +163,6 @@
         <code class="highlight">docker-compose pull</code> überprüft ob neue Images in der Registry vorhanden sind und lädt diese bei Bedarf herunter.
     </p>
 
-    
     <h2>Zusammenfassung</h2>
     <p>
         Wir haben gelernt, wie einfach es ist, mit docker-compose Anwednungen bestehend aus mehreren Container zu starten.<br/>
