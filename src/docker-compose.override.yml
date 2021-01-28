@@ -7,7 +7,7 @@ services:
   workshop-getting-started-website:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - USE_SQL_SERVER=false
     ports:
       - "9900:80"
-    environment:
-      - USE_SQL_SERVER=false
+
