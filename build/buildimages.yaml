@@ -7,8 +7,6 @@ parameters:
 
 
 jobs:
-- job: Running tests
-
 - job: BuildLinux
   condition: ne('${{ variables['Build.Reason'] }}', 'PullRequest')
   pool:
