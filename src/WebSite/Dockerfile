@@ -21,6 +21,7 @@ FROM build AS test
 ARG BuildId
 LABEL test=${BuildId}
 
+RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results_website.trx" WebSite.Tests/WebSite.Tests.csproj
 
 FROM build AS publish
 
