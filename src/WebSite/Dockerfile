@@ -20,7 +20,7 @@ RUN dotnet restore "WebSite.sln"
 COPY . .
 
 WORKDIR /src
-RUN dotnet build "WebSite.sln" -c Releease -o /app/build --no-restore
+RUN dotnet build "WebSite.sln" -c Release -o /app/build --no-restore
 
 FROM build AS test
 ARG BuildId
