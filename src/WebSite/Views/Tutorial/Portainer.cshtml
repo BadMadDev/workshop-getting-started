@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Persistence";
+}
+
+
+<div class="text-center">
+    <h2 class="display-4">Tutorial</h2>
+    <h3>Portainer</h3>
+</div>
+
+<div class="text-left">
+    <p>
+        Bevor ich viele Worte über das genannte Tool verliere würde ich sagen:<br/>
+        Lasst es uns installieren und anschauen!<br/>
+        Obwohl...viel zu installieren gibt es nicht, denn...genau! Portainer selbst kommt als Container-Lösung.
+    </p>
+
+    <h2>Starten von Portainer</h2>
+    <p>
+        Mit dem folgenden Befehl können wir Portainer herunterladen und starten:<br/>
+        <code class="highlight">docker run -p 9000:9000 -v "/var/run/docker.sock:/var/run/docker.sock" portainer/portainer-ce</code>
+        Danach lässt sich die grafische Benutzeroberfläche wie angegeben über Port 9000 aufrufen. Riskieren wir mal einen Blick...
+    </p>
+    
+    
+    <h2>Zusammenfassung</h2>
+    <p>
+        Neben Portainer gibt es noch viele weitere Tools und Anwendungen, die alle als Container-Lösungen zur Verfügung stehen.<br/>
+        Wer auf den Geschmack gekommen ist, kann einfach mal auf <a href="http://hub.docker.com">docker hub</a> stöbern.
+        Es gibt noch viel zu zeigen und zu lernen... Unser Tutorial zum selber Hand anlegen ist hier aber zunächst beendet.<br/>
+        Wie aber versprochen zeige ich noch, wie man Docker Compose nach Best Practice verwendet, und wie Docker in der Entwicklung hilft und verwendet werden kann, u.a. in automatisierten Builds u.ä.<br/>
+        Werfen wir dazu mal einen Blick auf meinen Entwicklungsrechner...
+    </p>
+
+    <h2 id="next-steps">Nächste Schritte</h2>
+    <ul>
+        <li>Das wars auch zunächst mit unserem Tutorial. In den nächsten Wochen werde ich aber weitere und tiefgreifendere Themen als Tutorial vorbereiten und an dieser Stelle veröffentlichen.<br/>
+            Unter anderem kommt dann auch Kubernetes (k8s) ins Spiel. Damit verteilen und Überwachen wir dann unsere Anwendung vollautomatisch auf mehrere Rechner.<br/>
+            Und wenn einer ausfällt? Dann übernimmt ein anderer. Also dran bleiben!
+        </li>
+    </ul>
+
+</div>

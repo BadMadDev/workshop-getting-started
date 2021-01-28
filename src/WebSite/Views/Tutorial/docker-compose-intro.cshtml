@@ -28,59 +28,61 @@
     </p>
     
     <p>
-        Der Einfachkeit halber habe ich eine Docker Compose Datei für unsere Anwendung bereits erstellt.<br/>
+        Eine Docker Compose Datei für die Bereitstellung unserer Anwendung habe ich bereits erstellt.<br/>
         Gucken wir uns diese einmal im Detail an.<br/>
-        Der Quellcode zu unseren Anwendung und der darin enthalten Docker Compose Datei ist auf <a href="">GitHub</a> verfügbar.<br/>
-        Da wir für die weiteren Schritte wie z.B. Continious Integration (CI) und Continous Deployment (CD) das Repository benötigen ist dies ein guter Zeitpunkt für den Download.
+        Die Compose Datei ist in einem extra Repository welches nur für die Bereitstellung dient hinterlegt<br/>
+        Somit werden Änderungen über die Quellcodeverwaltung verfolgt und die Datei ist einfach über git abzurufen.
+        Das Repository kann ebenfalls auf<a href="https://github.com/BadMadDev/workshop-getting-started-deploy">GitHub</a> eingesehen werden.<br/>
         <ol>
             <li>
                 Abrufen des Repoitories mittels git<br/>
-                <code class="highlight">git clone https://github.com/BadMadDev/workshop-getting-started.git</code>
+                <code class="highlight">git clone https://github.com/BadMadDev/workshop-getting-started-deploy</code>
+            </li>
+            <li>
+                Einen Blick in die Datei ist im Playground über den Aufruf des Editors direkt möglich
             </li>
         </ol>
     </p>
     
-    
-    <h2>Erstellen eines Netzwerkes für die Kommunikation der Container untereinander</h2>
     <p>
-        In den nächsten Schritten bedienen wir uns einer Lösung, die aus 2 Containeranwendungen besteht.<br/>
-        Die erste Anwendung ist ein Web-Frontend, die als Benutzerschnittstelle für  die Verwaltung von To-Do-Einträge dient.<br/>
-        Wir kennen diese ja bereits aus den bisherigen Schritten.<br/>
-        Diesmal allerdings werden wir die bestehende Anwendung so konfigurieren, dass diese ihre Daten in einer eigenen SQL-Datenbank speichert, dazu also mit einem Microsoft SQL-Server kommunizieren muss.
+        Mit der Docker Compose Datei ist es jetzt sehr einfach die Container zu starten.
+        <ol>
+            <li>
+                Wechseln in das Verzeichnis mit der Docker Compose Datei<br/>
+                <code class="highlight">cd workshop-getting-started-deploy</code>
+            </li>
+            <li>
+                Starten der Container mittels docker-compose<br/>
+                <code class="highlight">docker-compose up -d</code><br/>
+                Fertig! :)
+            </li>
+        </ol>
     </p>
-    <p>
-        Von Microsoft wird der SQL-Server auch als Docker-Image bereitgestellt.<br/>
-        Für unser Tutorial verwenden wir das Linux-Image für den SQL-Server 2019 als zweite Container-Anwendung.<br/>
-    </p>
-    <h2>Schritt-für-Schritt Anleitung</h2>
-    <ol>
-        <li>
-            Erstellen einer neuen Serverinstanz <code class="highlight">+ NEW INSTANCE</code>
-        </li>
-        <li>
-            Erstellen eines benannten Netzwerkes
-            <code class="highlight">docker network create todo-net</code>
-        </li>
-        <li>
-            Starten von SQL-Server und verbinden mit dem Netzwerk
-            <code class="highlight">docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd123!' -p 1433:1433 -d --network todo-net --network-alias sqldb mcr.microsoft.com/mssql/server:2019-latest</code>
-        </li>
-        <li>
-            Starten der Tutorial-Lösung<br/>
-            Diemal starten wir die Tutorial-Instanz und verbinden die mit dem gleichen Netzwerk wie den SQL-Server. Zudem übergeben wir einen weiteren Parameter, der besagt, das das Tutorial den SQL-Server als Backend verwenden soll.
-            <code class="highlight">docker run -d -p 80:80 --network todo-net -e USE_SQL_SERVER=true maddev77/workshop-getting-started</code>
 
-        </li>
-    </ol>
     <p>
-        Nachdem wie oben angegeben beide Containerinstanzen gestartet sind, können wir wie bisher ein paar To-Do-Einträge erfassen.<br/>
-        Diesmal jedoch werden die Einträge in der Datenbank auf der SQL-Server-Instanz gespeichert.<br/>
-        Bevor wir fortfahren, gucken wir uns das Ganze einmal genauer an...
+        Das Herunterfahren der Container ist jetzt ebenfalls genauso einfach möglich.<br/>
+        <code class="highlight">docker-compose up -d</code>
+    </p>
+
+    <p>
+        Auch das Aktualisieren der Anwendung ist genau so simpel.<br/>
+        <code class="highlight">docker-compose pull</code> überprüft ob neue Images in der Registry vorhanden sind und lädt diese bei Bedarf herunter.
+    </p>
+
+    
+    <h2>Zusammenfassung</h2>
+    <p>
+        Wir haben gelernt, wie einfach es ist, mit docker-compose Anwednungen bestehend aus mehreren Container zu starten.<br/>
+        Das Ganze ist über einen einzigen Aufruf möglich.<br/>
+        Was wir bisher über docker-compose gelernt haben hilft uns erstmal enorm, folgt allerdings noch nicht den Best Practices.<br/>
+        Um unterschiedlichen Szenarien gerecht zu werden (z.B. zwischen der Entwicklungsumgebung, der Produktionsumgebung aber auch der Situation beim Kunden) ist es möglich die Docker Compose Datei aufzuteilen.<br/>
+        Im Prinzip erstellt man dazu eine Datei mit den Angaben, die für jede Umgebung immer gleich sind und eine weitere Datei, die die unterschiedlichen Parameter definiert.<br/>
+        Wir gucken uns gleich auch noch genau an, vorher möchte ich aber noch auf ein nützliches Tool eingehen.
     </p>
 
     <h2 id="next-steps">Nächste Schritte</h2>
     <ul>
-        <li>Container Orchestrierung: <a href="./docker-compose-intro">Einführung in: docker-compose</a></li>
+        <li>Eine grafische Oberfläche für die Container-Verwaltung namens <a href="./Portainer">Portainer</a></li>
     </ul>
 
 </div>

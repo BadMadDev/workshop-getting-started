@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    user: root
+    volumes:
+      - type: volume
+        source: sqldata
+        target: /var/opt/mssql/data
+        read_only: false
+      - type: volume
+        source: sqllog
+        target: /var/opt/mssql/log
+        read_only: false
+      - type: volume
+        source: sqlsecrets
+        target: /var/opt/mssql/secrets
+        read_only: false
+    ports:
+      - "10433:1433"
+    networks:
+      todo-net:
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd123!
+
+  workshop-getting-started-website:
+    image: maddev77/workshop-getting-started:linux-latest
+    ports:
+      - "10080:80"
+    networks:
+      todo-net:
+    environment:
+      - USE_SQL_SERVER=true      
+    depends_on: 
+      - sqldb   
+
+volumes:
+  sqldata:
+  sqllog:
+  sqlsecrets:
+
+networks:
+  todo-net:
+
+
+
